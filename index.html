@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8051 Microcontroller Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question h3 {
+            margin-bottom: 10px;
+        }
+        .result {
+            margin-top: 10px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>8051 Microcontroller Quiz</h1>
+    <form id="quizForm">
+        <!-- Questions 1-10 -->
+        <div class="question" id="question1">
+            <h3>1. What is an interrupt?</h3>
+            <label><input type="radio" name="q1" value="a"> a) A process to pause execution</label><br>
+            <label><input type="radio" name="q1" value="b"> b) A signal indicating an event needing attention</label><br>
+            <label><input type="radio" name="q1" value="c"> c) A type of software error</label><br>
+            <label><input type="radio" name="q1" value="d"> d) A type of hardware failure</label>
+            <div class="result" id="result1"></div>
+        </div>
+
+        <div class="question" id="question2">
+            <h3>2. What does ISR stand for?</h3>
+            <label><input type="radio" name="q2" value="a"> a) Interrupt System Resource</label><br>
+            <label><input type="radio" name="q2" value="b"> b) Interrupt Service Routine</label><br>
+            <label><input type="radio" name="q2" value="c"> c) Integrated System Resource</label><br>
+            <label><input type="radio" name="q2" value="d"> d) Immediate Service Response</label>
+            <div class="result" id="result2"></div>
+        </div>
+
+        <div class="question" id="question3">
+            <h3>3. Which type of interrupt is triggered by external hardware?</h3>
+            <label><input type="radio" name="q3" value="a"> a) Software interrupt</label><br>
+            <label><input type="radio" name="q3" value="b"> b) Hardware interrupt</label><br>
+            <label><input type="radio" name="q3" value="c"> c) Timer interrupt</label><br>
+            <label><input type="radio" name="q3" value="d"> d) Debug interrupt</label>
+            <div class="result" id="result3"></div>
+        </div>
+
+        <div class="question" id="question4">
+            <h3>4. Which instruction is executed after handling an interrupt in 8051?</h3>
+            <label><input type="radio" name="q4" value="a"> a) RET</label><br>
+            <label><input type="radio" name="q4" value="b"> b) RETI</label><br>
+            <label><input type="radio" name="q4" value="c"> c) JUMP</label><br>
+            <label><input type="radio" name="q4" value="d"> d) HALT</label>
+            <div class="result" id="result4"></div>
+        </div>
+
+        <div class="question" id="question5">
+            <h3>5. What is the purpose of the Interrupt Vector Table?</h3>
+            <label><input type="radio" name="q5" value="a"> a) To store program data</label><br>
+            <label><input type="radio" name="q5" value="b"> b) To hold addresses of ISRs</label><br>
+            <label><input type="radio" name="q5" value="c"> c) To manage memory allocation</label><br>
+            <label><input type="radio" name="q5" value="d"> d) To store user inputs</label>
+            <div class="result" id="result5"></div>
+        </div>
+
+        <div class="question" id="question6">
+            <h3>6. In 8051, which register is responsible for enabling and disabling interrupts?</h3>
+            <label><input type="radio" name="q6" value="a"> a) PSW</label><br>
+            <label><input type="radio" name="q6" value="b"> b) IE</label><br>
+            <label><input type="radio" name="q6" value="c"> c) DPTR</label><br>
+            <label><input type="radio" name="q6" value="d"> d) TMOD</label>
+            <div class="result" id="result6"></div>
+        </div>
+
+        <div class="question" id="question7">
+            <h3>7. What happens to interrupts upon a reset in the 8051 microcontroller?</h3>
+            <label><input type="radio" name="q7" value="a"> a) All interrupts are enabled</label><br>
+            <label><input type="radio" name="q7" value="b"> b) All interrupts are disabled</label><br>
+            <label><input type="radio" name="q7" value="c"> c) Interrupts are unaffected</label><br>
+            <label><input type="radio" name="q7" value="d"> d) Only software interrupts are disabled</label>
+            <div class="result" id="result7"></div>
+        </div>
+
+        <div class="question" id="question8">
+            <h3>8. Which flag is affected by arithmetic operations in the 8051?</h3>
+            <label><input type="radio" name="q8" value="a"> a) Zero Flag</label><br>
+            <label><input type="radio" name="q8" value="b"> b) Carry Flag</label><br>
+            <label><input type="radio" name="q8" value="c"> c) Interrupt Flag</label><br>
+            <label><input type="radio" name="q8" value="d"> d) Overflow Flag</label>
+            <div class="result" id="result8"></div>
+        </div>
+
+        <div class="question" id="question9">
+            <h3>9. What does the instruction ADDC do?</h3>
+            <label><input type="radio" name="q9" value="a"> a) Adds two numbers without carry</label><br>
+            <label><input type="radio" name="q9" value="b"> b) Adds two numbers with carry</label><br>
+            <label><input type="radio" name="q9" value="c"> c) Subtracts two numbers</label><br>
+            <label><input type="radio" name="q9" value="d"> d) Multiplies two numbers</label>
+            <div class="result" id="result9"></div>
+        </div>
+
+        <div class="question" id="question10">
+            <h3>10. Which logical instruction clears a specified bit in 8051?</h3>
+            <label><input type="radio" name="q10" value="a"> a) ANL</label><br>
+            <label><input type="radio" name="q10" value="b"> b) ORL</label><br>
+            <label><input type="radio" name="q10" value="c"> c) CLR</label><br>
+            <label><input type="radio" name="q10" value="d"> d) CPL</label>
+            <div class="result" id="result10"></div>
+        </div>
+
+        <!-- Questions 11-20 -->
+        <div class="question" id="question11">
+            <h3>11. What is the effect of a software interrupt?</h3>
+            <label><input type="radio" name="q11" value="a"> a) Generated by external hardware</label><br>
+                        <label><input type="radio" name="q11" value="b"> b) Caused by an exceptional condition</label><br>
+            <label><input type="radio" name="q11" value="c"> c) Generated by a timer</label><br>
+            <label><input type="radio" name="q11" value="d"> d) None of the above</label>
+            <div class="result" id="result11"></div>
+        </div>
+
+        <div class="question" id="question12">
+            <h3>12. What does polling refer to in microcontroller operations?</h3>
+            <label><input type="radio" name="q12" value="a"> a) Continuous monitoring of devices</label><br>
+            <label><input type="radio" name="q12" value="b"> b) Interrupt-driven responses</label><br>
+            <label><input type="radio" name="q12" value="c"> c) Power management</label><br>
+            <label><input type="radio" name="q12" value="d"> d) Memory allocation</label>
+            <div class="result" id="result12"></div>
+        </div>
+
+        <div class="question" id="question13">
+            <h3>13. Which of the following is NOT a logical instruction in 8051?</h3>
+            <label><input type="radio" name="q13" value="a"> a) ANL</label><br>
+            <label><input type="radio" name="q13" value="b"> b) ORL</label><br>
+            <label><input type="radio" name="q13" value="c"> c) ADD</label><br>
+            <label><input type="radio" name="q13" value="d"> d) XOR</label>
+            <div class="result" id="result13"></div>
+        </div>
+
+        <div class="question" id="question14">
+            <h3>14. What instruction would you use to perform a division in 8051?</h3>
+            <label><input type="radio" name="q14" value="a"> a) DIV</label><br>
+            <label><input type="radio" name="q14" value="b"> b) MUL</label><br>
+            <label><input type="radio" name="q14" value="c"> c) ADD</label><br>
+            <label><input type="radio" name="q14" value="d"> d) SUB</label>
+            <div class="result" id="result14"></div>
+        </div>
+
+        <div class="question" id="question15">
+            <h3>15. Which flag is set when a division operation results in a remainder?</h3>
+            <label><input type="radio" name="q15" value="a"> a) Carry Flag</label><br>
+            <label><input type="radio" name="q15" value="b"> b) Zero Flag</label><br>
+            <label><input type="radio" name="q15" value="c"> c) Overflow Flag</label><br>
+            <label><input type="radio" name="q15" value="d"> d) None of the above</label>
+            <div class="result" id="result15"></div>
+        </div>
+
+        <div class="question" id="question16">
+            <h3>16. Which of the following instructions would NOT affect the Carry Flag?</h3>
+            <label><input type="radio" name="q16" value="a"> a) ADD</label><br>
+            <label><input type="radio" name="q16" value="b"> b) SUB</label><br>
+            <label><input type="radio" name="q16" value="c"> c) ANL</label><br>
+            <label><input type="radio" name="q16" value="d"> d) MUL</label>
+            <div class="result" id="result16"></div>
+        </div>
+
+        <div class="question" id="question17">
+            <h3>17. What does the instruction SWAP do in 8051?</h3>
+            <label><input type="radio" name="q17" value="a"> a) Swaps the contents of two registers</label><br>
+            <label><input type="radio" name="q17" value="b"> b) Swaps the nibbles of the accumulator</label><br>
+            <label><input type="radio" name="q17" value="c"> c) Swaps the addresses in memory</label><br>
+            <label><input type="radio" name="q17" value="d"> d) None of the above</label>
+            <div class="result" id="result17"></div>
+        </div>
+
+        <div class="question" id="question18">
+            <h3>18. How many hardware interrupts are there in the 8051 microcontroller?</h3>
+            <label><input type="radio" name="q18" value="a"> a) 4</label><br>
+            <label><input type="radio" name="q18" value="b"> b) 5</label><br>
+            <label><input type="radio" name="q18" value="c"> c) 6</label><br>
+            <label><input type="radio" name="q18" value="d"> d) 8</label>
+            <div class="result" id="result18"></div>
+        </div>
+
+        <div class="question" id="question19">
+            <h3>19. Which instruction is used to perform an XOR operation?</h3>
+            <label><input type="radio" name="q19" value="a"> a) ANL</label><br>
+            <label><input type="radio" name="q19" value="b"> b) ORL</label><br>
+            <label><input type="radio" name="q19" value="c"> c) XRL</label><br>
+            <label><input type="radio" name="q19" value="d"> d) CLR</label>
+            <div class="result" id="result19"></div>
+        </div>
+
+        <div class="question" id="question20">
+            <h3>20. In which scenario would a software interrupt occur?</h3>
+            <label><input type="radio" name="q20" value="a"> a) Key press</label><br>
+            <label><input type="radio" name="q20" value="b"> b) Timer overflow</label><br>
+            <label><input type="radio" name="q20" value="c"> c) Division by zero</label><br>
+            <label><input type="radio" name="q20" value="d"> d) Mouse movement</label>
+            <div class="result" id="result20"></div>
+        </div>
+
+        <!-- Questions 21-30 -->
+        <div class="question" id="question21">
+            <h3>21. Which register must be set high to enable interrupts in 8051?</h3>
+            <label><input type="radio" name="q21" value="a"> a) PSW</label><br>
+            <label><input type="radio" name="q21" value="b"> b) EA</label><br>
+            <label><input type="radio" name="q21" value="c"> c) DPTR</label><br>
+            <label><input type="radio" name="q21" value="d"> d) SP</label>
+            <div class="result" id="result21"></div>
+        </div>
+
+        <div class="question" id="question22">
+            <h3>22. What happens when the RETI instruction is executed?</h3>
+            <label><input type="radio" name="q22" value="a"> a) The microcontroller resets</label><br>
+            <label><input type="radio" name="q22" value="b"> b) It returns from the ISR</label><br>
+            <label><input type="radio" name="q22" value="c"> c) It halts execution</label><br>
+            <label><input type="radio" name="q22" value="d"> d) It enables interrupts</label>
+            <div class="result" id="result22"></div>
+        </div>
+
+        <div class="question" id="question23">
+            <h3>23. What is the function of the ADD instruction in 8051?</h3>
+            <label><input type="radio" name="q23" value="a"> a) Subtract two numbers</label><br>
+            <label><input type="radio" name="q23" value="b"> b) Add two numbers without carry</label><br>
+            <label><input type="radio" name="q23" value="c"> c) Multiply two numbers</label><br>
+            <label><input type="radio" name="q23" value="d"> d) Divide two numbers</label>
+                       <div class="result" id="result23"></div>
+        </div>
+
+        <div class="question" id="question24">
+            <h3>24. What is the purpose of the INC instruction?</h3>
+            <label><input type="radio" name="q24" value="a"> a) Increment the contents of a register</label><br>
+            <label><input type="radio" name="q24" value="b"> b) Decrement the contents of a register</label><br>
+            <label><input type="radio" name="q24" value="c"> c) Clear the contents of a register</label><br>
+            <label><input type="radio" name="q24" value="d"> d) None of the above</label>
+            <div class="result" id="result24"></div>
+        </div>
+
+        <div class="question" id="question25">
+            <h3>25. How many addressing modes are available in the 8051 microcontroller?</h3>
+            <label><input type="radio" name="q25" value="a"> a) 2</label><br>
+            <label><input type="radio" name="q25" value="b"> b) 4</label><br>
+            <label><input type="radio" name="q25" value="c"> c) 6</label><br>
+            <label><input type="radio" name="q25" value="d"> d) 8</label>
+            <div class="result" id="result25"></div>
+        </div>
+
+        <div class="question" id="question26">
+            <h3>26. Which addressing mode uses direct memory address to access data?</h3>
+            <label><input type="radio" name="q26" value="a"> a) Immediate addressing</label><br>
+            <label><input type="radio" name="q26" value="b"> b) Register addressing</label><br>
+            <label><input type="radio" name="q26" value="c"> c) Direct addressing</label><br>
+            <label><input type="radio" name="q26" value="d"> d) Indexed addressing</label>
+            <div class="result" id="result26"></div>
+        </div>
+
+        <div class="question" id="question27">
+            <h3>27. What is the main function of a timer in 8051?</h3>
+            <label><input type="radio" name="q27" value="a"> a) Counting external events</label><br>
+            <label><input type="radio" name="q27" value="b"> b) Generating delays</label><br>
+            <label><input type="radio" name="q27" value="c"> c) Dividing clock signals</label><br>
+            <label><input type="radio" name="q27" value="d"> d) Controlling interrupts</label>
+            <div class="result" id="result27"></div>
+        </div>
+
+        <div class="question" id="question28">
+            <h3>28. Which register pair is commonly used for serial communication in 8051?</h3>
+            <label><input type="radio" name="q28" value="a"> a) TMOD and TCON</label><br>
+            <label><input type="radio" name="q28" value="b"> b) SBUF and SCON</label><br>
+            <label><input type="radio" name="q28" value="c"> c) DPTR and SP</label><br>
+            <label><input type="radio" name="q28" value="d"> d) TH0 and TL0</label>
+            <div class="result" id="result28"></div>
+        </div>
+
+        <div class="question" id="question29">
+            <h3>29. What is the function of the CLR instruction in 8051?</h3>
+            <label><input type="radio" name="q29" value="a"> a) Clears the accumulator</label><br>
+            <label><input type="radio" name="q29" value="b"> b) Clears the carry flag</label><br>
+            <label><input type="radio" name="q29" value="c"> c) Clears a specified bit</label><br>
+            <label><input type="radio" name="q29" value="d"> d) All of the above</label>
+            <div class="result" id="result29"></div>
+        </div>
+
+        <div class="question" id="question30">
+            <h3>30. Which instruction is used to rotate bits to the left in 8051?</h3>
+            <label><input type="radio" name="q30" value="a"> a) RLC</label><br>
+            <label><input type="radio" name="q30" value="b"> b) RRC</label><br>
+            <label><input type="radio" name="q30" value="c"> c) RL</label><br>
+            <label><input type="radio" name="q30" value="d"> d) RR</label>
+            <div class="result" id="result30"></div>
+        </div>
+
+        <button type="button" onclick="submitQuiz()">Submit</button>
+    </form>
+</div>
+
+<script>
+    const correctAnswers = {
+        q1: "b",
+        q2: "b",
+        q3: "b",
+        q4: "b",
+        q5: "b",
+        q6: "b",
+        q7: "b",
+        q8: "b",
+        q9: "b",
+        q10: "c",
+        q11: "b",
+        q12: "a",
+        q13: "c",
+        q14: "a",
+        q15: "d",
+        q16: "c",
+        q17: "b",
+        q18: "c",
+        q19: "c",
+        q20: "c",
+        q21: "b",
+        q22: "b",
+        q23: "b",
+        q24: "a",
+        q25: "b",
+        q26: "c",
+        q27: "b",
+        q28: "b",
+        q29: "d",
+        q30: "a"
+    };
+
+    function submitQuiz() {
+        let score = 0;
+        let totalQuestions = 30;
+        
+        for (let i = 1; i <= totalQuestions; i++) {
+            let question = document.querySelector(`input[name="q${i}"]:checked`);
+            let resultDiv = document.getElementById(`result${i}`);
+
+            if (question) {
+                if (question.value === correctAnswers[`q${i}`]) {
+                    resultDiv.innerHTML = "Correct!";
+                    resultDiv.classList.add("correct");
+                    resultDiv.classList.remove("incorrect");
+                    score++;
+                } else {
+                    resultDiv.innerHTML = `Incorrect! The correct answer is "${correctAnswers[`q${i}`].toUpperCase()}"`;
+                    resultDiv.classList.add("incorrect");
+                    resultDiv.classList.remove("correct");
+                }
+            } else {
+                resultDiv.innerHTML = "No answer selected!";
+                resultDiv.classList.add("incorrect");
+                resultDiv.classList.remove("correct");
+            }
+        }
+
+        alert(`Your total score is ${score} o
